@@ -1,7 +1,8 @@
 <html>
 <head>
+<link rel="stylesheet" href="static/main.css" />
 <script type="text/javascript">
-	  var current_number = 10;
+	  var current_number = 1;
       var recognition = new webkitSpeechRecognition();
       recognition.lang = 'en-GB';
       recognition.maxAlternatives = 1;
@@ -14,8 +15,8 @@
           }
         }
         if(parseInt(select.options[0].text) == current_number){
-        	console.log('Congrats !');
         	current_number = current_number + 1;
+        	document.getElementById("current_number").innerHTML = parseInt(current_number);
         }
       }
       function start() {
@@ -23,10 +24,46 @@
         recognition.start();
       }
     </script>
-    <select id="select"></select>
-    <button onclick="start()">Click to Speak</button>
+    
 </script>
-<body>
-<p>Hello World</p>
+<body class="homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Current Number:</a></h1>
+						
+							</header>
+							<footer>
+								<a href="#banner" id="current_number" class="button circled scrolly">1</a>
+							</footer>
+						</div>
+
+				</div>
+
+				</div>
+
+		</div>
+		<select id="select"></select>
+		<button onclick="start()">Click to Speak</button>
+		<!-- Scripts -->
+			<script>
+				function myFunction() {
+					document.getElementById("current_number").innerHTML = (parseInt(document.getElementById("current_number").innerHTML) + 1);
+				}
+			</script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.onvisible.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
 </body>
 </html>
