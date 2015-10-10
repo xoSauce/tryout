@@ -1,8 +1,5 @@
 <html>
 <head>
-<script>
-var someJavaScriptVar = '{{ myVar }}';
-</script>
 <script type="text/javascript">
       var recognition = new webkitSpeechRecognition();
       recognition.lang = 'en-GB';
@@ -26,6 +23,5 @@ var someJavaScriptVar = '{{ myVar }}';
 </script>
 <body>
 <p>Hello World</p>
-<button onclick="alert('Name: {{ myVar }} ' + someJavaScriptVar)" />
 </body>
 </html>
