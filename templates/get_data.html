@@ -3,22 +3,30 @@
 <script>
 var someJavaScriptVar = '{{ myVar }}';
 </script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.0.0/annyang.min.js"></script>
 <script>
-if (annyang) {
-  // Let's define our first command. First the text we expect, and then the function it should call
-  var commands = {
-    '*repeat': function() {
-      console.log(repeat);
-    },
-  };
+	    <script type="text/javascript">
+      var recognition = new SpeechRecognition();
+      recognition.maxAlternatives = 10;
+      recognition.onresult = function(event) {
+        if (event.results.length > 0) {
+          var result = event.results[0];
+          for (var i = 0; i < result.length; ++i) {
+            var text = result[i].transcript;
+            select.options[i] = new Option(text, text);
+          }
+        }
+      }
 
-  // Add our commands to annyang
-  annyang.addCommands(commands);
-  annyang.debug();
-  // Start listening. You can call this here, or attach this call to an event, button, etc.
-  annyang.start();
-}
+      function start() {
+        select.options.length = 0;
+        recognition.start();
+      }
+    </script>
+
+    <select id="select"></select>
+    <button onclick="start()">Click to Speak</button>
+</script>
+
 </script>
 <body>
 <p>Hello World</p>
