@@ -8,23 +8,14 @@ var someJavaScriptVar = '{{ myVar }}';
 if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
-    'one': function() {
-      console.log("1");
+    '*repeat': function() {
+      console.log(repeat);
     },
-    'two': function() {
-    	console.log("2");
-    },
-    '1': function() {
-    	console.log("1 - digit");
-    },
-    '2': function() {
-    	console.log("2 - digit");
-    }
   };
 
   // Add our commands to annyang
   annyang.addCommands(commands);
-
+  annyang.debug();
   // Start listening. You can call this here, or attach this call to an event, button, etc.
   annyang.start();
 }
