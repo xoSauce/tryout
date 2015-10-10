@@ -4,9 +4,9 @@
 <script type="text/javascript">
 	  var current_number = 1;
       var recognition = new webkitSpeechRecognition();
-      recognition.lang = 'en-GB';
       recognition.maxAlternatives = 1;
       recognition.onresult = function(event) {
+        console.log(recognition.lang);
         if (event.results.length > 0) {
           var result = event.results[0];
           for (var i = 0; i < result.length; ++i) {
@@ -21,6 +21,9 @@
       }
       function start() {
         select.options.length = 0;
+        var e = document.getElementById("language"); 
+        var language = e.options[e.selectedIndex].value;
+        recognition.lang = language;
         recognition.start();
       }
     </script>
@@ -50,6 +53,12 @@
 		</div>
 		<select id="select"></select>
 		<button onclick="start()">Click to Speak</button>
+    <select id="language">
+                <option value="en-GB">English</option>
+                <option value="de">German</option>
+                <option value="ro">Romanian</option>
+                <option value="fr">French</option>
+            </select>
 		<!-- Scripts -->
 			<script>
 				function myFunction() {
