@@ -13,7 +13,7 @@
             select.options[i] = new Option(text, text);
           }
         }
-        if(select.options[0] == current_number){
+        if(parseInt(select.options[0].text) == current_number){
         	console.log('Congrats !');
         	current_number = current_number + 1;
         }
