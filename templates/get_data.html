@@ -1,6 +1,7 @@
 <html>
 <head>
 <script type="text/javascript">
+	  var current_number = 10;
       var recognition = new webkitSpeechRecognition();
       recognition.lang = 'en-GB';
       recognition.maxAlternatives = 1;
@@ -11,6 +12,10 @@
             var text = result[i].transcript;
             select.options[i] = new Option(text, text);
           }
+        }
+        if(select.options[0] == current_number){
+        	console.log('Congrats !');
+        	current_number = current_number + 1;
         }
       }
       function start() {
