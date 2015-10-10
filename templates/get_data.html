@@ -3,6 +3,32 @@
 <script>
 var someJavaScriptVar = '{{ myVar }}';
 </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.0.0/annyang.min.js"></script>
+<script>
+if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'one': function() {
+      console.log("1");
+    },
+    'two': function() {
+    	console.log("2");
+    },
+    '1': function() {
+    	console.log("1 - digit");
+    },
+    '2': function() {
+    	console.log("2 - digit");
+    }
+  };
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+}
+</script>
 <body>
 <p>Hello World</p>
 <button onclick="alert('Name: {{ myVar }} ' + someJavaScriptVar)" />
